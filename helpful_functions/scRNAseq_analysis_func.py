@@ -113,7 +113,8 @@ def get_marker_genes_from_pb(
             expr_in_cluster = expr_means_df.loc[gene, cluster_id]
             if abs(logfc) >= fc_thresh and expr_in_cluster >= min_expr_thresh:
                 gene_out = gene.replace("G:", "") if strip_prefix else gene
-                results.append({'cell_type': cluster_label, 'gene': gene_out})
+                results.append({'cell_type': cluster_label, 'gene': gene_out,'criterea': criterea_int,'val':logfc})
+
 
     return pd.DataFrame(results)
 
@@ -201,6 +202,6 @@ def get_marker_genes_from_pb_V2(
                     continue
 
             gene_out = gene.replace("G:", "") if strip_prefix else gene
-            results.append({'cell_type': cluster_label, 'gene': gene_out})
+            results.append({'cell_type': cluster_label, 'gene': gene_out,'criterea': criterea_int,'val':logfc})
 
     return pd.DataFrame(results)
